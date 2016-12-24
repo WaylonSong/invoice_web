@@ -3,6 +3,7 @@ package invoice.controller;
 /**
  * Created by song on 15/11/19.
  */
+import com.google.gson.Gson;
 import invoice.dataobject.Invoice;
 import invoice.dto.TransferDTO;
 import invoice.service.InvoiceService;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import util.Result;
-import net.sf.json.JSONObject;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -43,6 +43,8 @@ public class InvoiceRestController {
     public Result add(@RequestBody Invoice invoice, HttpServletRequest request) {
         invoice.setOwnerId(invoice.getSeller().getTitle());
         Result<Invoice> result = invoiceService.add(invoice);
+//        String jsonObject = new Gson().toJson(invoice);
+//        System.out.println(jsonObject);
         return result;
     }
 
