@@ -43,8 +43,6 @@ public class InvoiceRestController {
     public Result add(@RequestBody Invoice invoice, HttpServletRequest request) {
         invoice.setOwnerId(invoice.getSeller().getTitle());
         Result<Invoice> result = invoiceService.add(invoice);
-//        String jsonObject = new Gson().toJson(invoice);
-//        System.out.println(jsonObject);
         return result;
     }
 
