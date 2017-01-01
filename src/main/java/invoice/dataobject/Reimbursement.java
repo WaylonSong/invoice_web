@@ -1,6 +1,9 @@
 package invoice.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,33 +13,43 @@ import java.util.List;
 //报销
 @Entity
 @Table
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Reimbursement {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id;
-    String userId;
+    String id;
+    String name;
+    String submitter;
     String companyTitle;//单位信息
     String department;//部门
-
-    @OneToMany(fetch = FetchType.LAZY)
-    List<Invoice> invoiceList;//发票列表
-
+    @Column(length = 1000)
+    String invoiceNumberList;//发票列表
     String description;//说明信息
+    String state;
 
-    public int getId() {
+    public String getSubmitter() {
+        return submitter;
+    }
+
+    public void setSubmitter(String submitter) {
+        this.submitter = submitter;
+    }
+
+    @Column(columnDefinition = "TIMESTAMP")
+    Date date;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getDepartment() {
@@ -45,14 +58,6 @@ public class Reimbursement {
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-    public List<Invoice> getInvoiceList() {
-        return invoiceList;
-    }
-
-    public void setInvoiceList(List<Invoice> invoiceList) {
-        this.invoiceList = invoiceList;
     }
 
     public String getDescription() {
@@ -69,5 +74,29 @@ public class Reimbursement {
 
     public void setCompanyTitle(String companyTitle) {
         this.companyTitle = companyTitle;
+    }
+
+    public String getInvoiceNumberList() {
+        return invoiceNumberList;
+    }
+
+    public void setInvoiceNumberList(String invoiceNumberList) {
+        this.invoiceNumberList = invoiceNumberList;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

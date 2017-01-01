@@ -1,5 +1,7 @@
 package invoice.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +9,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "company")
+@JsonInclude(JsonInclude.Include.NON_NULL)
+
 public class Company implements Trader{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

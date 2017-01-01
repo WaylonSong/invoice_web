@@ -1,5 +1,6 @@
 package util;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 
 /**
@@ -12,6 +13,12 @@ import java.io.Serializable;
 public class Result<E> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	public Result(){}
+
+	public Result(Integer status, String message){
+		this.status = status;
+		this.message = message;
+	}
 	private Integer status; // 1表示正确，-1表示错误
 	private String message; // 详细信息
 	private E data; // 返回的数据

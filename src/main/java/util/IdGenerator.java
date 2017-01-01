@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -9,7 +10,14 @@ public class IdGenerator {
     public static String getClientUUID(){
         return ("C_"+ UUID.randomUUID()).replace("-","");
     }
+    public static String getInvoiceId(){
+        String result = "";
+        for(int i = 0; i < 10; i++){
+            result += new Random().nextInt(10);
+        }
+        return  result;
+    }
     public static void main(String args[]){
-        System.out.println(IdGenerator.getClientUUID());
+        System.out.println(IdGenerator.getInvoiceId());
     }
 }

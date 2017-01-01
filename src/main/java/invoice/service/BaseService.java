@@ -14,7 +14,7 @@ public class BaseService {
 //            result.setSuccess(msg, t);
 //        return result;
 //    }
-
+    public int PAGE_SIZE = 15;
     Result resultWrap(Object t){
         if(t instanceof Result)
             return  (Result) t;

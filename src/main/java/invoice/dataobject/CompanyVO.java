@@ -1,11 +1,14 @@
 package invoice.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.Embeddable;
 
 /**
  * Created by song on 2016/12/21.
  */
 @Embeddable
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompanyVO implements Trader{
     String title;
     //    纳税人识别号

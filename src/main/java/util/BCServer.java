@@ -1,9 +1,18 @@
 package util;
 
+import java.util.Date;
+
 /**
  * Created by song on 2016/12/23.
  */
 public class BCServer {
-    public static String SERVER_URL = "http://162.105.30.216:27050";
-    public static String CCID = "605c641544017168967ef87599df1b2f72835bb8591bd316ef7eb6ade2eb5982a0365d20731b37f97dfbccdd4c995ef291642bb66e01f68e2b1deca01009e9cd";
+    public static String SERVER_URL = "http://127.0.0.1:7050";
+    public static String CCID = "50f2f52b9c398f63da1f450edcff0915959b57bb726ec04d46c5ff188f038dcc44183ca10425416af52b0a5cc332ef559434a4333f496ffe0654c5b1d233df39";
+    public static String getTimeStamp(){
+        return  ""+new Date().getTime()/1000;
+    }
+
+    public static void main(String args[]){
+        System.out.println(getTimeStamp());
+    }
 }

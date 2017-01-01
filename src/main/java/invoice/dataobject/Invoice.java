@@ -1,7 +1,8 @@
 package invoice.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "invoice")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Invoice {
     @Id
     String number;
@@ -46,7 +48,28 @@ public class Invoice {
     @Column(name = "type", columnDefinition = "varchar(20) default 'COMMON'")
     InvoiceType type;
 
-    String OwnerId;
+    String ownerId;
+
+//    交易历史
+    @Transient
+    String history;
+
+/*
+status：存储发票的状态
+    0：新创建发票，还未经过流转
+    1：流转中发票
+    2：报销中发票
+    3：报销完成发票
+ */
+    @Transient
+    String status;
+
+    @Transient
+    String submittm;
+
+    @Transient
+    String confirmtm;
+
 
     public String getNumber() {
         return number;
@@ -105,11 +128,42 @@ public class Invoice {
     }
 
     public String getOwnerId() {
-        return OwnerId;
+        return ownerId;
     }
 
     public void setOwnerId(String ownerId) {
-        OwnerId = ownerId;
+        this.ownerId = ownerId;
     }
 
+    public String getHistory() {
+        return history;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSubmittm() {
+        return submittm;
+    }
+
+    public void setSubmittm(String submittm) {
+        this.submittm = submittm;
+    }
+
+    public String getConfirmtm() {
+        return confirmtm;
+    }
+
+    public void setConfirmtm(String confirmtm) {
+        this.confirmtm = confirmtm;
+    }
 }

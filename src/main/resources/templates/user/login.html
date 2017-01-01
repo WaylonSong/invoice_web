@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register</title>
+    <title>用户登录</title>
     <!-- Author: Song -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="/js/bootstrapCssWrapper-bundle.js"></script>
 </head>
 <body>
@@ -15,21 +14,19 @@
     var pageParas ={
         formInit :[
             {name:"name"} ,
-            {name:"mobile"} ,
             {name:"pwd"}
         ],
         formExtend :[
             {name:"name", alias:"用户名"} ,
-            {name:"mobile", alias:"手机号"} ,
-            {name:"pwd", alias:"密码"}
+            {name:"pwd", alias:"密码", type:"password"}
         ],
-        title : "用户注册",
-        url : "/register",
+        title : "用户登录",
+        url : "/rest/user/login",
         redirectUrl : "/",
         method : "post"
     }
 </script>
 <script src="/js/commonV3.js"></script>
-<script src="/js/editFormGenerator-bundle.js"></script>
+<script src="/js/standardRespFormGenerator-bundle.js"></script>
 </body>
 </html>

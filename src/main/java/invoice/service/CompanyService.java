@@ -26,4 +26,9 @@ public class CompanyService extends BaseService{
         return resultWrap(companyRepository.save(company));
     }
 
+    @Transactional
+    public Company getDefaultSellerCompany(){
+        return companyRepository.findOne(1);
+    }
+
 }

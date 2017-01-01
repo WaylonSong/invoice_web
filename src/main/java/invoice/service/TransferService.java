@@ -4,6 +4,7 @@ import invoice.dataobject.Invoice;
 import invoice.dataobject.Trader;
 import invoice.dataobject.TransferHistory;
 import invoice.dto.TransferDTO;
+import invoice.repository.blockchain.TransferBCRepository;
 import invoice.repository.hiber.TransferHistoryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,9 @@ public class TransferService {
     @Resource
     TransferHistoryRepository transferHistoryRepository;
 
+    @Resource
+    TransferBCRepository transferBCRepository;
+
     @Transactional
     public Result transfer(String fromId, String toId, Invoice invoice){
 //        TODO 权限判断from与session
@@ -31,17 +35,18 @@ public class TransferService {
             result.setFailed("交易权限错误");
             return result;
         }
-        invoice.setOwnerId(toId);
-        result = invoiceService.update(invoice);
-        if(result.getStatus() < 0)
-            return result;
-        TransferHistory transferHistory = new TransferHistory();
-        TransferDTO transferDTO = new TransferDTO();
-        transferDTO.setFromId(fromId);
-        transferDTO.setInvoiceNumber(invoice.getNumber());
-        transferDTO.setToId(toId);
-        transferHistory.setTransferDTO(transferDTO);
-        transferHistoryRepository.save(transferHistory);
+//        invoice.setOwnerId(toId);
+//        result = invoiceService.update(invoice);
+//        if(result.getStatus() < 0)
+//            return result;
+//        TransferHistory transferHistory = new TransferHistory();
+//        TransferDTO transferDTO = new TransferDTO();
+//        transferDTO.setFromId(fromId);
+//        transferDTO.setInvoiceNumber(invoice.getNumber());
+//        transferDTO.setToId(toId);
+//        transferHistory.setTransferDTO(transferDTO);
+//        transferHistoryRepository.save(transferHistory);
+        result = transferBCRepository.transfer(fromId, toId, invoice.getNumber());
         return result;
     }
 

@@ -1,18 +1,21 @@
 package invoice.dataobject;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by song on 2016/12/19.
  */
 @Entity
 @Table(name = "user")
-public class User implements Trader{
+public class User implements Trader, Serializable{
     @Id
     String id;
     String mobile;
     String name;
     String pwd;
+    UserType type;
+    int companyId;
 
     public String getId() {
         return id;
@@ -48,6 +51,22 @@ public class User implements Trader{
 
     @Override
     public String getTraderId() {
-        return this.getId();
+        return this.getMobile();
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 }
