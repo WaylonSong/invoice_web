@@ -92,7 +92,7 @@ public class ReimburseRestController extends BaseController {
     String safeGetCompanyUserId(HttpServletRequest request){
         User user = (User)request.getSession().getAttribute("user");
         if(user == null || user.getType() != UserType.COM)
-            return "dky";
+            return "oxchains";
         else{
             return user.getName();
         }
