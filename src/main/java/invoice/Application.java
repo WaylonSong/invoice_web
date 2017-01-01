@@ -44,7 +44,7 @@ public class Application {
                     }
                     return true;
                 }
-            }).addPathPatterns("/invoice/*").addPathPatterns("/");
+            }).addPathPatterns("/invoice/*");
         }
     }
 }
