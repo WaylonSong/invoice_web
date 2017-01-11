@@ -74,7 +74,7 @@ public class MobileController {
         return MOBILE_DIR_PRE + "/register";
     }
 
-    @RequestMapping("/register2")
+    @RequestMapping("/apply")
     public String register2() {
         return MOBILE_DIR_PRE + "/register2";
     }
