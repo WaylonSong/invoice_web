@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10da8651-ab9c-4bd1-8a67-ac440d4d7b47" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/invoice/filter/MobileFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/invoice/utils/CheckMobile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/invoice/Application.java" afterPath="$PROJECT_DIR$/src/main/java/invoice/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/invoice/controller/MobileController.java" afterPath="$PROJECT_DIR$/src/main/java/invoice/controller/MobileController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/invoice/filter/MobileFilter.java" afterPath="$PROJECT_DIR$/src/main/java/invoice/filter/MobileFilter.java" />
     </list>
     <ignored path="invoice_web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,8 +74,8 @@
       <file leaf-file-name="MobileFilter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/invoice/filter/MobileFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="35" column="58" lean-forward="false" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+            <state relative-caret-position="163">
+              <caret line="31" column="79" lean-forward="false" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1414,7 +1410,7 @@
       <workItem from="1482247083633" duration="6444000" />
       <workItem from="1482300110849" duration="38712000" />
       <workItem from="1482553478143" duration="12784000" />
-      <workItem from="1484029909596" duration="29278000" />
+      <workItem from="1484029909596" duration="29936000" />
     </task>
     <servers />
   </component>
@@ -1433,7 +1429,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124678000" />
+    <option name="totallyTimeSpent" value="125336000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="23" width="1850" height="1057" extended-state="6" />
@@ -1939,8 +1935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/invoice/filter/MobileFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="35" column="58" lean-forward="false" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
+        <state relative-caret-position="163">
+          <caret line="31" column="79" lean-forward="false" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

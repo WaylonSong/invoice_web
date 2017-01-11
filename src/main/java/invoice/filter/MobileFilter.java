@@ -29,7 +29,7 @@ public class MobileFilter implements Filter {
         String userAgent = request.getHeader( "USER-AGENT" ).toLowerCase();
         String uri = request.getRequestURI();
         boolean isFromMobile = CheckMobile.check(userAgent);
-        if (isFromMobile && !uri.startsWith("/mobile")) {
+        if (isFromMobile && !uri.startsWith("/mobile") && !uri.startsWith("/rest")) {
             response.sendRedirect("/mobile" + uri);
             return;
         } else if (!isFromMobile && uri.startsWith("/mobile")) {
