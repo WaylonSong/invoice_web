@@ -15,7 +15,7 @@ public class ReimburseBCRepository extends BlockChainRepository{
 
     public Result save(ReimbursementDTO reimbursementDTO) {
         Object[] args = {"createbx",
-                reimbursementDTO.getId(),reimbursementDTO.getInvoiceNumberList().replace("\t",","), reimbursementDTO.getMobile(),
+                reimbursementDTO.getId(),reimbursementDTO.getInvoiceNumberList().replaceAll("\t",","), reimbursementDTO.getMobile(),
                 reimbursementDTO.getCompanyTitle(),
                 BCServer.getTimeStamp(), "",BCServer.getTimeStamp()};
 

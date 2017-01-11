@@ -14,6 +14,5 @@ import org.springframework.test.context.junit4.*;
 public class InvoiceRepositoryTest {
     @Test
     public void testAdd(){
-        System.out.println("test");
     }
 }

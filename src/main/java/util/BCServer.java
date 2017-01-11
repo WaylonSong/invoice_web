@@ -7,12 +7,8 @@ import java.util.Date;
  */
 public class BCServer {
     public static String SERVER_URL = "http://127.0.0.1:7050";
-    public static String CCID = "50f2f52b9c398f63da1f450edcff0915959b57bb726ec04d46c5ff188f038dcc44183ca10425416af52b0a5cc332ef559434a4333f496ffe0654c5b1d233df39";
+    public static String CCID = "d98ef63f879dd66d47f650997b778ffcea6abc427cd5c11563ebfcfc9da9d8185fa4fa928eb8e7508b4da9a046f0ba2172638914303eaaf1e24d175cd4470f80";
     public static String getTimeStamp(){
-        return  ""+new Date().getTime()/1000;
-    }
-
-    public static void main(String args[]){
-        System.out.println(getTimeStamp());
+        return System.currentTimeMillis() / 1000 + "";
     }
 }

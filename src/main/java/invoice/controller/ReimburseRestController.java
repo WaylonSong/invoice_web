@@ -77,6 +77,7 @@ public class ReimburseRestController extends BaseController {
         if(state!=null)
             state = URLDecoder.decode(state);
         String companyUserId = safeGetCompanyUserId(request);
+        System.out.println("company: " + companyUserId);
         return reimburseService.getList(pageNum, q, state, asc, desc, companyUserId);
     }
 

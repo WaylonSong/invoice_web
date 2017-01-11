@@ -1,11 +1,16 @@
 package util.encrypt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.security.MessageDigest;
 
 /**
  * Created by song on 16/7/28.
  */
 public class PasswordSaltEncoder {
+    private static final Logger logger = LoggerFactory.getLogger(PasswordSaltEncoder.class);
+
     private final static String[] hexDigits = {"0", "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
@@ -60,14 +65,5 @@ public class PasswordSaltEncoder {
         int d1 = n / 16;
         int d2 = n % 16;
         return hexDigits[d1] + hexDigits[d2];
-    }
-
-    public static void main(String[] args) {
-        String salt = "helloworld";
-//        PasswordSaltEncoder encoderMd5 = new PasswordSaltEncoder(salt);
-//        String encode = encoderMd5.encode("test");
-//        System.out.println(encode);
-//        boolean passwordValid = encoderMd5.isPasswordValid("1bd98ed329aebc7b2f89424b5a38926e", "test");
-        System.out.println(PasswordSaltEncoder.encode("123456",salt));
     }
 }

@@ -6,6 +6,8 @@ import invoice.repository.blockchain.InvoiceBCRepository;
 import invoice.repository.hiber.InvoiceRepository;
 import invoice.repository.hiber.TicketRepository;
 import invoice.repository.hiber.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,8 @@ import java.util.List;
  */
 @Service
 public class InvoiceService extends BaseService{
+    private final Logger logger = LoggerFactory.getLogger(InvoiceService.class);
+
     @Resource
     TransferService transferService;
 
@@ -127,14 +131,7 @@ public class InvoiceService extends BaseService{
         save(invoice);
 
         request.getSession().setAttribute("user", user);
-        System.out.println(invoice.getNumber());
+        logger.info(invoice.getNumber());
         return transferService.transfer(seller.getTraderId(), user.getTraderId(), invoice);
     }
-
-
-    public static void main(String args[]){
-        String str = "18610314606";
-        System.out.println(str.substring(7));
-    }
-
 }

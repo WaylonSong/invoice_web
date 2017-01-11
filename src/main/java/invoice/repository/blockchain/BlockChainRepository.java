@@ -1,6 +1,8 @@
 package invoice.repository.blockchain;
 
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.BCServer;
 import util.JsonResponse;
 import util.Result;
@@ -10,12 +12,15 @@ import util.UrlHelper;
  * Created by song on 2016/12/21.
  */
 public class BlockChainRepository {
+    private final Logger logger = LoggerFactory.getLogger(BlockChainRepository.class);
+
     Result responseToResult(String responseJson, Gson gson){
+        logger.info(responseJson);
         JsonResponse jsonResponse;
         try {
             jsonResponse = gson.fromJson(responseJson, JsonResponse.class);
         }catch (Exception e){
-            System.out.println("返回数据不是合法的json数据");
+            logger.info("返回数据不是合法的json数据");
             return null;
         }
         return jsonResponse.toResult();
@@ -36,8 +41,8 @@ public class BlockChainRepository {
                 method+"\",\"params\":{\"type\":1,\"chaincodeID\":{\"name\":\"" +
                 BCServer.CCID+"\"},\"ctorMsg\":{\"args\":[" +
                 argsStr+
-                "]}},\"id\":1}";
-        System.out.println(requestJson);
+                "]},\"secureContext\": \"jim\"},\"id\":1}";
+        logger.info(requestJson);
         return requestJson;
     }
 
@@ -61,13 +66,4 @@ public class BlockChainRepository {
             return strings[index];
         return "";
     }
-
-    public static void main(String ars[]){
-        Object[] args = {"getbill", 1238, "JD"};
-        String aaa = "0\n1\n2\n3";
-        System.out.println(new BlockChainRepository().metaParse(aaa, 9));
-//        System.out.println(new BlockChainRepository().requestTemplate(args, "query"));
-//        new BlockChainRepository().firePost(args, "query");
-    }
-
 }

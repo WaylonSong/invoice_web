@@ -5,6 +5,8 @@ import invoice.dto.ReimbursementDTO;
 import invoice.repository.blockchain.ReimburseBCRepository;
 import invoice.repository.hiber.InvoiceRepository;
 import invoice.repository.hiber.ReimburseRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 @Service
 public class ReimburseService extends BaseService {
+    private final Logger logger = LoggerFactory.getLogger(ReimburseService.class);
     @Resource
     ReimburseRepository reimburseRepository;
     @Resource
@@ -63,7 +66,7 @@ public class ReimburseService extends BaseService {
 
             }
         }else{
-            System.out.println(state);
+            logger.info(state);
             if(q == null||q.equals("")){
                 pageData = reimburseRepository.findByCompanyTitleAndState(companyUserId, state, pageRequest);
             }else {
@@ -85,7 +88,7 @@ public class ReimburseService extends BaseService {
 
             }
         }else{
-            System.out.println(state);
+            logger.info(state);
             if(q == null||q.equals("")){
                 pageData = reimburseRepository.findBySubmitterAndState(userId, state, pageRequest);
             }else {
@@ -104,7 +107,6 @@ public class ReimburseService extends BaseService {
 
     public Result confirm(String id, String companyUserId) {
         Result result = reimburseBCRepository.confirm(id, companyUserId);
-        System.out.println("++++++++++++++++++++++ ++");
         if(result.getStatus() > 0){
             Reimbursement reimbursement = reimburseRepository.findOne(id);
             reimbursement.setState("已完成");
