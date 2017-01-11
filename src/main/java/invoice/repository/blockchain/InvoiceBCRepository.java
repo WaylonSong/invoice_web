@@ -44,8 +44,9 @@ public class InvoiceBCRepository extends BlockChainRepository {
             return null;
         }
 //        Invoice invoiceMeta = new Gson().fromJson(metaJson, Invoice.class);
+        logger.info("invoiceJson: {}", invoiceJson);
         invoice.setDate(TimeUtil.stampToDate(metaParse(invoiceJson, 5)));
-        invoice.setHistory(metaParse(invoiceJson, 2).replace(",","->"));
+        invoice.setHistory(metaParse(invoiceJson, 2).replaceAll(",","->"));
         invoice.setOwnerId(metaParse(invoiceJson, 3));
         invoice.setStatus(metaParse(invoiceJson, 4));
         invoice.setSubmittm(metaParse(invoiceJson, 6));
@@ -60,7 +61,7 @@ public class InvoiceBCRepository extends BlockChainRepository {
     }
 
     public Result save(Invoice invoice) {
-        String metaData = new Gson().toJson(invoice).replace("\"","\\\"");
+        String metaData = new Gson().toJson(invoice).replaceAll("\"","\\\"");
         if(invoice.getBuyer() == null)
             invoice.setBuyer(new CompanyVO());
         Object[] args = {"create", invoice.getNumber(),

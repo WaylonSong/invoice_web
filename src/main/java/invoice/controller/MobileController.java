@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -77,5 +78,12 @@ public class MobileController {
     @RequestMapping("/apply")
     public String register2() {
         return MOBILE_DIR_PRE + "/register2";
+    }
+
+    @RequestMapping("/invoice/{mobile}/{number}")
+    public String invoiceDetail(@PathVariable String mobile, @PathVariable String number, HttpServletRequest request) {
+        request.setAttribute("mobile", mobile);
+        request.setAttribute("number", number);
+        return MOBILE_DIR_PRE + "/invoiceDetail";
     }
 }

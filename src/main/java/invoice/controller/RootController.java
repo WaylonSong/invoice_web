@@ -31,8 +31,9 @@ public class RootController {
     }
 
     @RequestMapping(value = "invoice/{mobile}/{number}", method = RequestMethod.GET)
-    public String index1_9(Map<String,String> map, @PathVariable String mobile) {
+    public String index1_9(Map<String,String> map, @PathVariable String mobile, HttpServletRequest request) {
         map.put("traderId", mobile);
+        request.setAttribute("traderId", mobile);
         return "/invoice/viewByMobile";
     }
 

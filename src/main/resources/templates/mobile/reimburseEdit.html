@@ -144,13 +144,23 @@
                     $('#name').val(item.name);
                     $('#companyTitle').val(item.companyTitle);
                     $('#department').val(item.department);
-                    $('#ticketList').html(item.invoiceNumberList);
                     $('#description').val(item.description);
                     $('#state').html(item.state);
                     $('#date').val(item.date);
+                    var isDone = false;
                     if (item.state == '已完成') {
                         $('#subBtn').hide();
+                        isDone = true;
                     }
+
+                    var ticketList = item.invoiceNumberList.split(/\t|-/);
+                    var ticketListHtml = '';
+                    var owner = isDone ? item.companyTitle : item.submitter;
+                    for (var i = 0; i < ticketList.length; i++) {
+                        var ticket = ticketList[i];
+                        ticketListHtml = ticketListHtml + '<a href="/mobile/invoice/' + owner + '/' + ticket + '">' + ticket + '</a><br/>';
+                    }
+                    $('#ticketList').html(ticketListHtml);
                 } else {
                     alert('操作失败：' + data.message);
                     location.href = '/mobile/invoice/list';
