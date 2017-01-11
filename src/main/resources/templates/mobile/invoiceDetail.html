@@ -167,51 +167,12 @@
         <input type="text" class="input-text" id="sellerBankAccount">
         <em></em>
     </div>
-
+    <img src='/images/demo.jpeg' style="width: 100%;"/>
 </div>
 <script src="/js/zepto.min.js"></script>
 <script src="/js/touch.js"></script>
 <script>
     $(function() {
-        /**
-         * {
-    "status": 1,
-    "message": "success",
-    "data": {
-        "number": "4091302496",
-        "date": 1484125770,
-        "itemList": [
-            {
-                "id": 997,
-                "name": "iphone",
-                "spec": "bad",
-                "unit": "box",
-                "quantity": 1,
-                "price": 6888,
-                "taxRate": 0,
-                "taxAmount": 0,
-                "totalPrice": 6888
-            }
-        ],
-        "seller": {
-            "title": "JD",
-            "taxId": "123456",
-            "address": "Beijing",
-            "bankName": "ICBC",
-            "bankAccount": "62221234567890",
-            "traderId": "JD"
-        },
-        "buyer": {
-            "title": "oxchains",
-            "traderId": "oxchains"
-        },
-        "ownerId": "oxchains",
-        "history": "JD->15910591399->oxchains",
-        "status": "3",
-        "submittm": "1484125785",
-        "confirmtm": "1484126263"
-    }
-}*/
         $.ajax({
             url: '/rest/invoice/${mobile}/${number}',
             type: 'GET',
