@@ -153,7 +153,7 @@
                         isDone = true;
                     }
 
-                    var ticketList = item.invoiceNumberList.split(/\t|-/);
+                    var ticketList = item.invoiceNumberList.split(/\t|-|\\t/);
                     var ticketListHtml = '';
                     var owner = isDone ? item.companyTitle : item.submitter;
                     for (var i = 0; i < ticketList.length; i++) {
