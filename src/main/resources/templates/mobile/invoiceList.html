@@ -281,8 +281,8 @@
                 var state = item.status;
                 var tmpl2 = tmpl;
                 if (sstate == 'all' || state == sstate) {
-                    if (state == '报销中') {
-                        tmpl2 = tmpl2.replace('<input type="checkbox" name="ticketIDs" ticketID="{ticketID}"/>', '');
+                    if (state == '报销中' || state == '报销完成') {
+                        tmpl2 = tmpl2.replace('<input type="checkbox" name="ticketIDs" companyTitle="{companyTitle}" ticketID="{ticketID}"/>', '');
                     }
                     html = html + tmpl2.replace('{department}', item.buyerId)
                             .replace('{name}', '')
