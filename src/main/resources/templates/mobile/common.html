@@ -7,6 +7,8 @@
 <script>
     (function() {
         var item = document.getElementById('pageTitle');
-        item.innerHTML = document.title;
+        if (document.title != '首页') {
+            item.innerHTML = document.title;
+        }
     })();
 </script>
