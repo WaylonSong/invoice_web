@@ -7,6 +7,8 @@ import invoice.dataobject.UserType;
 import invoice.dto.HistoryDTO;
 import invoice.repository.blockchain.BlockChainRepository;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import util.*;
@@ -27,6 +29,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Repository
 public class InvoiceBCRepository extends BlockChainRepository {
+    private final Logger logger = LoggerFactory.getLogger(InvoiceBCRepository.class);
 
     public Invoice findOne(String invoiceNumber, String traderId){
         Object[] args = {"getInvoice", invoiceNumber, traderId};
@@ -37,10 +40,11 @@ public class InvoiceBCRepository extends BlockChainRepository {
         try {
             invoice = new Gson().fromJson(metaJson, Invoice.class);
         }catch (Exception e){
-            System.out.println("访问发票错误,Json格式错误");
+            logger.info("访问发票错误,Json格式错误");
             return null;
         }
 //        Invoice invoiceMeta = new Gson().fromJson(metaJson, Invoice.class);
+        logger.info("invoiceJson: {}", invoiceJson);
         invoice.setDate(TimeUtil.stampToDate(metaParse(invoiceJson, 5)));
         invoice.setHistory(metaParse(invoiceJson, 2).replace(",","->"));
         invoice.setOwnerId(metaParse(invoiceJson, 3));
@@ -70,7 +74,7 @@ public class InvoiceBCRepository extends BlockChainRepository {
     public List<Invoice> findAll(String traderId, UserType type) {
         Object[] args = {"myHistory", traderId, ""+type.ordinal()};
         String resp = fireQuery(args).getMessage();
-        System.out.println(resp);
+        logger.info(resp);
         if(resp == null || resp.equals("null"))
             return null;
 

@@ -31,7 +31,6 @@ public class TimeUtil {
         now.get(Calendar.YEAR);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         for(int i =0 ; i < 12 ; i++){
-            System.out.println(sdf.format(now.getTime()));
             months[i] = sdf.format(now.getTime());
             now.add(Calendar.MONTH, -1);
         }
@@ -56,8 +55,4 @@ public class TimeUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return sdf.format(now.getTime());
     }
-    public static void main(String args[]){
-        System.out.println(now());
-    }
-
 }

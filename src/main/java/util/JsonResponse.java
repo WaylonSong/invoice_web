@@ -1,9 +1,14 @@
 package util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created by song on 2016/12/25.
  */
 public class JsonResponse {
+    private final Logger logger = LoggerFactory.getLogger(JsonResponse.class);
+
     Result result;
     String jsonrpc;
     int id;
@@ -58,7 +63,7 @@ public class JsonResponse {
         util.Result result = new util.Result();
         result.setStatus(getResult().getStatus().equals("OK")?1:-1);
         result.setMessage(getResult().getMessage());
-        System.out.println(result.getMessage());
+        logger.info(result.getMessage());
         return result;
     }
 }

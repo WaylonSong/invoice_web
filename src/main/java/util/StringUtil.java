@@ -66,7 +66,4 @@ public class StringUtil {
             return className.toLowerCase();
         return className.substring(0,1).toLowerCase()+className.substring(1, className.length());
     }
-    public static void main(String[] args) {
-        System.out.println(camelToUnderline("caaaAddd"));
-    }
 }
