@@ -6,6 +6,11 @@ SpringBoot+SpringSession+Mysql+React
 
 项目启动后 /example 生成测试数据（一个商户JD，编号1-1000购物小票）
 
+```
+<U> CompletionStage<U> thenCompose​(Function<? super T,? extends CompletionStage<U>> fn)
+
+```
+
 /auto 可根据输入手机号码和关联小票自动生成发票，默认会存入用户名：手机号，密码：手机号后四位
 
  ![image](https://github.com/WaylonSong/invoice_web/blob/master/readme/2.png)
